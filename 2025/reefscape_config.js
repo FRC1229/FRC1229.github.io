@@ -4,6 +4,8 @@ var config_data = `
   "title": "Tidal Shift Scouting PASS 2025",
   "page_title": "Tidal Shift - REEFSCAPE",
   "checkboxAs": "10",
+  "page_image": "resources/images/Logo-front-apparel.png",
+  
   "prematch": [
     { "name": "Scouter Initials",
       "code": "s",
