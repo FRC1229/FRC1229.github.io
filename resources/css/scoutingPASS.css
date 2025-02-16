@@ -1,9 +1,9 @@
 @font-face {
-    font-family: 'Alexis';
+    font-family: 'Robinco';
     font-style: normal;
     font-weight: normal;
-    src: local('Alexis'), url('../fonts/alex.woff') format('woff');
-    src: url("../fonts/alexisv3.ttf") format('truetype');
+   /* src: local('Alexis'), url('../fonts/alex.woff') format('woff');  */
+    src: local('Robinco'),url("../fonts/Robinco.ttf") format('truetype');
 }
 
 html, body{
@@ -38,8 +38,9 @@ html, body{
 }
 
 .button {
-    font-family: Alexis;
-    font-size: 16px;
+    font-family: Robinco;
+    font-size: 60px;
+    
 }
 
 #autonHeader, #endgameHeader, #teleopHeader1, #teleopHeader2{
@@ -108,7 +109,7 @@ html, body{
 }
 
 h1{
-    font-family: Alexis;
+    font-family: Robinco;
     text-align: center;
     border-style: groove;
     border-color: white;
@@ -123,7 +124,7 @@ h1{
 }
 
 h2{
-    font-family: Alexis;
+    font-family: Robinco;
     text-align: center;
     font-size: 30px;
     font-weight: 300;
@@ -154,22 +155,24 @@ h2{
 }
 
 #nextButton1, #nextButton2, #nextButton9, #nextButton10, .clearForm, .submitForm, #displayButton, #copyButton {
-    font-family: Alexis;
+    font-family: Robinco;
     padding: 10px;
     background-color: rgb(151, 199, 240);
     text-decoration: none;
     display: inline-block;
+    font-size: 40px;
 }
 
 #nextButton3, #nextButton4, #nextButton5, #nextButton6, #nextButton7, #nextButton8 {
-    font-family: Alexis;
+    font-family: Robinco;
     background-color: black;
     padding: 10px;
     color: white;
+    font-size: 40px;
 }
 
 .undoButton, .flipButton {
-    font-family: Alexis;
+    font-family: Robinco;
     background-color: black;
     padding: 10px;
     color: white;
@@ -177,33 +180,35 @@ h2{
 }
 
 #prevButton7, #prevButton8, #prevButton9{
-    font-family: Alexis;
+    font-family: Robinco;
     background-color: rgb(151, 199, 240);
     padding: 10px;
+    font-size: 40px;
 }
 
 #prevButton1, #prevButton2, #prevButton3, #prevButton4, #prevButton5, #prevButton6{
-    font-family: Alexis;
+    font-family: Robinco;
     background-color: black;
     padding: 10px;
     color: white;
+    font-size: 40px;
 
 }
 
 #prematch_table{
-    font: Alexis;
+    font: Robinco;
     text-align: center;
 }
 
 
 h1 .odd {
-    font-family: Alexis;
+    font-family: Robinco;
     text-align: center;
     color: #0AB4EC;
 }
 
 h1 .even {
-    font-family: Alexis;
+    font-family: Robinco;
     text-align: center;
     color: #42B333;
 }
