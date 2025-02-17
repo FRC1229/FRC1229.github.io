@@ -1,10 +1,15 @@
 var config_data = `
 {
   "dataFormat": "tsv",
-  "title": "Tidal Shift Scouting PASS 2025",
-  "page_title": "Tidal Shift - REEFSCAPE",
+  "title": "Scouting PASS 2025",
+  "page_title": "REEFSCAPE1229",
   "pitConfig": "true",
   "prematch": [
+    { "name": "Pit Scouting (Do Not Change)",
+      "code": "p",
+      "type": "text",
+      "defaultValue": "Pit Scouting"
+    },
     { "name": "Team Number",
       "code": "t",
       "type": "number"

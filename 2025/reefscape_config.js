@@ -1,12 +1,16 @@
 var config_data = `
 {
   "dataFormat": "tsv",
-  "title": "Tidal Shift Scouting PASS 2025",
-  "page_title": "Tidal Shift - REEFSCAPE",
+  "title": "Scouting PASS 2025",
+  "page_title": "REEFSCAPE",
   "checkboxAs": "10",
-  "page_image": "resources/images/Logo-front-apparel.png",
-  
   "prematch": [
+    { "name": "Team #",
+      "code": "t",
+      "type": "team",
+      "min": 1,
+      "max": 99999
+    },
     { "name": "Scouter Initials",
       "code": "s",
       "type": "scouter",
@@ -14,21 +18,20 @@ var config_data = `
       "maxSize": 5,
       "required": "true"
     },
-    { "name": "Event",
+    
+    { "name": "Not Important",
       "code": "e",
       "type": "event",
-      "defaultValue": "2025ilpe",
+      "defaultValue": "Not Important",
       "required": "true"
     },
-    { "name": "Match Level",
+    { "name": "Not Important",
       "code": "l",
       "type": "level",
       "choices": {
-        "qm": "Quals<br>",
-        "sf": "Semifinals<br>",
-        "f": "Finals"
+        "Not Important": ""
       },
-      "defaultValue": "qm",
+      "defaultValue": "Not Important",
       "required": "true"
     },
     { "name": "Match #",
@@ -38,25 +41,16 @@ var config_data = `
       "max": 150,
       "required": "true"
     },
-    { "name": "Robot",
+    { "name": "Not Important",
       "code": "r",
       "type": "robot",
       "choices": {
-        "r1": "Red-1",
-        "b1": "Blue-1<br>",
-        "r2": "Red-2",
-        "b2": "Blue-2<br>",
-        "r3": "Red-3",
-        "b3": "Blue-3"
+        "Not Important": ""
       },
+      "defaultValue": "Not Important",
       "required":"true"
     },
-    { "name": "Team #",
-      "code": "t",
-      "type": "team",
-      "min": 1,
-      "max": 99999
-    },
+    
     { "name": "Auto Start Position",
       "code": "as",
       "type": "clickable_image",
@@ -68,10 +62,16 @@ var config_data = `
     }
   ],
   "auton": [
-    { "name": "Leave Starting Line",
-      "code": "al",
-      "type": "bool"
-    },
+    { "name": "Starting Position",
+  "code": "asp",
+  "type": "radio",
+  "choices": {
+    "far": "far",
+    "mid": "mid",
+    "close": "close"
+  },
+  "defaultValue": "a"
+},
     { "name": "Coral L1",
       "code": "ac1",
       "type": "counter"
@@ -88,6 +88,19 @@ var config_data = `
       "code": "ac4",
       "type": "counter"
     },
+    {
+    "name": "Leave",
+    "code": "alc",
+    "type": "checkbox"
+    },
+    { "name": "Remove Algae #",
+      "code": "ara",
+      "type": "counter"
+    },
+    { "name": "Failed Algae #",
+      "code": "afa",
+      "type": "counter"
+    },
     { "name": "Auto Scoring Position",
       "code": "asp",
       "type": "clickable_image",
@@ -95,14 +108,6 @@ var config_data = `
       "dimensions": "6 6",
       "allowableResponses": "1 2 3 4 5 6 7 8 9 10 11 12 13 14 17 18 19 20 23 24 25 26 27 28 29 30 31 32 33 34 35 36",
       "shape": "circle 5 black red true"
-    },
-    { "name": "Processor Score",
-      "code": "aps",
-      "type": "counter"
-    },
-    { "name": "Net Score",
-      "code": "ans",
-      "type": "counter"
     }
   ],
   "teleop": [
@@ -122,6 +127,11 @@ var config_data = `
       "code": "tc4",
       "type": "counter"
     },
+    {
+    "name": "Able to remove algae",
+    "code": "tra",
+    "type": "checkbox"
+    },
     { "name": "Processor Score",
       "code": "tps",
       "type": "counter"
@@ -130,27 +140,22 @@ var config_data = `
       "code": "tns",
       "type": "counter"
     },
-    { "name": "Pickup From",
-      "code": "tpu",
+    { "name": "Miss # #",
+      "code": "afa",
+      "type": "counter"
+    },
+    { "name": "Defense Slider",
+      "code": "tds",
       "type": "radio",
       "choices": {
-        "s": "Coral Station<br>",
-        "f": "Floor<br>",
-        "b": "Both<br>",
-        "x": "Not Attempted"
+        "none": "none",
+        "bad": "bad",
+        "good": "good"
       },
-      "defaultValue": "x"
-    },
-    { "name": "Scored in<br>Opponent<br>Processor",
-      "code": "opp",
-      "type": "bool"
+      "required":"true"
     }
   ],
   "endgame": [
-    { "name": "Barge Timer",
-      "code": "ebt",
-      "type": "timer"
-    },
     { "name": "Final Robot Status",
       "code": "efs",
       "type":"radio",
@@ -162,13 +167,15 @@ var config_data = `
         "x": "Not attempted"
       },
       "defaultValue": "x"
+    },
+    { "name": "Comments",
+      "code": "ce",
+      "type": "text",
+      "size": 15,
+      "maxSize": 55
     }
   ],
   "postmatch": [
-    { "name": "Attained Coopertition Pt",
-      "code": "cop",
-      "type": "bool"
-    },
     { "name": "Algae Left in Reef",
       "code": "alr",
       "type": "number",
@@ -225,11 +232,6 @@ var config_data = `
     },
     { "name": "Dropped Algae (>2)",
       "code": "da",
-      "type": "bool"
-    },
-    { "name": "Make good<br>alliance partner?",
-      "tooltip": "Would you want this robot on your alliance in eliminations?",
-      "code": "all",
       "type": "bool"
     },
     { "name": "Comments",
