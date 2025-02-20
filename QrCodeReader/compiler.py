@@ -16,6 +16,7 @@ teamlist = [team1]
 Teams = {}
 for team in teamlist:
     Teams[team] = {
+        f"Match #": 0,
         f"Auto Coral L1": 0, 
         f"Auto Coral L2": 0,
         f"Auto Coral L3": 0,
@@ -33,45 +34,44 @@ for team in teamlist:
 
 if((os.path.exists("Teams"))):
     for i in teamlist:
-        count=0
         if((os.path.exists(f"Teams\\{i}.csv"))):
              with open(f"Teams\\{i}.csv", "r", encoding='UTF8') as r:
                 data = list(csv.reader(r, delimiter=","))
                 for row in data:
                     try:
-                        count+=1
-                        Teams[i]["Auto Coral L1"] += int(row[8])
-                        Teams[i]["Auto Coral L2"] += int(row[9])
-                        Teams[i]["Auto Coral L3"] += int(row[10])
-                        Teams[i]["Auto Coral L4"] += int(row[11])
-                        Teams[i]["Teleop Coral L1"] += int(row[16])
-                        Teams[i]["Teleop Coral L2"] += int(row[17])
-                        Teams[i]["Teleop Coral L3"] += int(row[18])
-                        Teams[i]["Teleop Coral L4"] += int(row[19])
-                        Teams[i]["Auto Remove Algae #"] += int(row[15])
-                        Teams[i]["Missed #"] += int(row[23])
-                        Teams[i]["Processor #"] += int(row[21])
-                        Teams[i]["Net #"] += int(row[22])
-                        Teams[i]["Algae left in reef"] += int(row[27])
+                        Teams[i]["Match #"] += int(str(row[5]).lstrip("0"))
+                        # Teams[i]["Auto Coral L1"] += int(row[8])
+                        # Teams[i]["Auto Coral L2"] += int(row[9])
+                        # Teams[i]["Auto Coral L3"] += int(row[10])
+                        # Teams[i]["Auto Coral L4"] += int(row[11])
+                        # Teams[i]["Teleop Coral L1"] += int(row[16])
+                        # Teams[i]["Teleop Coral L2"] += int(row[17])
+                        # Teams[i]["Teleop Coral L3"] += int(row[18])
+                        # Teams[i]["Teleop Coral L4"] += int(row[19])
+                        # Teams[i]["Auto Remove Algae #"] += int(row[15])
+                        # Teams[i]["Missed #"] += int(row[23])
+                        # Teams[i]["Processor #"] += int(row[21])
+                        # Teams[i]["Net #"] += int(row[22])
+                        # Teams[i]["Algae left in reef"] += int(row[27])
                         
                     except:
                         # print("")
                         pass
                         # print(total)
                         # print(count)
-                Teams[i]["Auto Coral L1"] /= count
-                Teams[i]["Auto Coral L2"] /= count
-                Teams[i]["Auto Coral L3"] /= count
-                Teams[i]["Auto Coral L4"] /= count
-                Teams[i]["Teleop Coral L1"] /= count
-                Teams[i]["Teleop Coral L2"] /= count
-                Teams[i]["Teleop Coral L3"] /= count
-                Teams[i]["Teleop Coral L4"] /= count
-                Teams[i]["Auto Remove Algae #"] /= count
-                Teams[i]["Missed #"] /= count
-                Teams[i]["Processor #"] /= count
-                Teams[i]["Net #"] /= count
-                Teams[i]["Algae left in reef"] /= count
+                # Teams[i]["Auto Coral L1"] /= count
+                # Teams[i]["Auto Coral L2"] /= count
+                # Teams[i]["Auto Coral L3"] /= count
+                # Teams[i]["Auto Coral L4"] /= count
+                # Teams[i]["Teleop Coral L1"] /= count
+                # Teams[i]["Teleop Coral L2"] /= count
+                # Teams[i]["Teleop Coral L3"] /= count
+                # Teams[i]["Teleop Coral L4"] /= count
+                # Teams[i]["Auto Remove Algae #"] /= count
+                # Teams[i]["Missed #"] /= count
+                # Teams[i]["Processor #"] /= count
+                # Teams[i]["Net #"] /= count
+                # Teams[i]["Algae left in reef"] /= count
 else:          
     print("ERROR: No Teams Folder found")
 
