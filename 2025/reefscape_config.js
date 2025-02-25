@@ -7,7 +7,7 @@ var config_data = `
   "prematch": [
     { "name": "Team #",
       "code": "t",
-      "type": "team",
+      "type": "number",
       "min": 1,
       "max": 99999
     },
@@ -36,29 +36,32 @@ var config_data = `
     },
     { "name": "Match #",
       "code": "m",
-      "type": "match",
+      "type": "number",
       "min": 1,
       "max": 150,
       "required": "true"
     },
-    { "name": "Not Important",
+    { "name": "Robot",
       "code": "r",
       "type": "robot",
+      "choices": {
+        "r1": "Red-1",
+        "b1": "Blue-1<br>",
+        "r2": "Red-2",
+        "b2": "Blue-2<br>",
+        "r3": "Red-3",
+        "b3": "Blue-3"
+      },
+      "required":"true"
+    },
+    { "name": "Not Important",
+      "code": "r",
+      "type": "no",
       "choices": {
         "Not Important": ""
       },
       "defaultValue": "Not Important",
       "required":"true"
-    },
-    
-    { "name": "Auto Start Position",
-      "code": "as",
-      "type": "clickable_image",
-      "filename": "2025/half_field.png",
-      "clickRestriction": "one",
-      "dimensions": "6 6",
-      "allowableResponses": "1 7 13 19 25 31",
-      "shape": "circle 5 black red true"
     }
   ],
   "auton": [
@@ -66,9 +69,9 @@ var config_data = `
   "code": "asp",
   "type": "radio",
   "choices": {
-    "far": "far",
-    "mid": "mid",
-    "close": "close"
+    "f": "far",
+    "m": "mid",
+    "c": "close"
   },
   "defaultValue": "a"
 },
@@ -100,14 +103,6 @@ var config_data = `
     { "name": "Failed Algae #",
       "code": "afa",
       "type": "counter"
-    },
-    { "name": "Auto Scoring Position",
-      "code": "asp",
-      "type": "clickable_image",
-      "filename": "2025/reef.png",
-      "dimensions": "6 6",
-      "allowableResponses": "1 2 3 4 5 6 7 8 9 10 11 12 13 14 17 18 19 20 23 24 25 26 27 28 29 30 31 32 33 34 35 36",
-      "shape": "circle 5 black red true"
     }
   ],
   "teleop": [
@@ -132,6 +127,11 @@ var config_data = `
     "code": "tra",
     "type": "checkbox"
     },
+    {
+    "name": "Attained Coopertition",
+    "code": "tac",
+    "type": "checkbox"
+    },
     { "name": "Processor Score",
       "code": "tps",
       "type": "counter"
@@ -140,17 +140,17 @@ var config_data = `
       "code": "tns",
       "type": "counter"
     },
-    { "name": "Miss # #",
-      "code": "afa",
+    { "name": "Miss #",
+      "code": "tmn",
       "type": "counter"
     },
     { "name": "Defense Slider",
       "code": "tds",
       "type": "radio",
       "choices": {
-        "none": "none",
-        "bad": "bad",
-        "good": "good"
+        "n": "none",
+        "b": "bad",
+        "g": "good"
       },
       "required":"true"
     }
@@ -172,7 +172,8 @@ var config_data = `
       "code": "ce",
       "type": "text",
       "size": 15,
-      "maxSize": 55
+      "maxSize": 55,
+      "defaultValue": "x"
     }
   ],
   "postmatch": [
@@ -203,8 +204,7 @@ var config_data = `
         "g": "Good<br>",
         "e": "Excellent<br>",
         "x": "Did not play defense"
-      },
-      "defaultValue": "x"
+      }
     },
     { "name": "Speed Rating",
       "code": "sr",
@@ -215,8 +215,7 @@ var config_data = `
         "3": "3<br>",
         "4": "4<br>",
         "5": "5 (fast)"
-      },
-      "defaultValue":"3"
+      }
     },
     { "name": "Died/Immobilized",
       "code": "die",
@@ -238,7 +237,8 @@ var config_data = `
       "code": "co",
       "type": "text",
       "size": 15,
-      "maxSize": 55
+      "maxSize": 55,
+      "defaultValue": "x"
     }
   ]
 }`;

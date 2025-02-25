@@ -1,4 +1,5 @@
 #Importing Packages
+
 import glob
 import cv2 as cv
 import pathlib
@@ -66,12 +67,12 @@ while True:
                 open(f"Teams\\{V1[0]}.csv", "a").close()
                 with open(f"Teams\\{V1[0]}.csv", "a", encoding='UTF8') as f:
                     w = csv.writer(f)
-                    w.writerow(["Scouter", "Team #", "Not Important","Not Important","Match #", "Not Important", "Auto Start Position", "Starting Position",
+                    w.writerow(["Team #","Scouter Name", "Not Important","Not Important","Match #", "Robot Name", "Auto Start Position", 
                                 "Auto Coral L1", "Auto Coral L2", "Auto Coral L3", "Auto Coral L4", "Leave", "Remove Algae #", "Auto Failed Algae #", "Auto Scoring Position", "Teleop Coral L1"
-                                , "Teleop Coral L2", "Teleop Coral L3", "Teleop Coral L4", "Able to Remove Algae",
+                                , "Teleop Coral L2", "Teleop Coral L3", "Teleop Coral L4","Able to Remove Algae","Attained Coopertition",
                                 "Processor Score", "Net Score", "Miss #", "Defense slider", "Final Robot Status", "Endgame Comments",
-                                "Algae Left In Reef", "Driver skill", "Defense Rating", "Sped Rating", "Died", "Tippy", "Dropped Coral (>2)",
-                                "Dropped Algae (>2)", "Dropped Algae (<2)", "Postmatch comments"])
+                                "Algae Left In Reef", "Driver skill", "Defense Rating", "Speed Rating", "Died", "Tippy", "Dropped Coral (>2)",
+                                "Dropped Algae (>2)"])
                     w.writerow(V1)
 
     if not ret:
